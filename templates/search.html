@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Page</title>
+</head>
+<body style="background:  #ffffff">
+    <center>
+        <div style="
+        background-color: #588bda;  /* You can change this color */
+        padding: 10px;
+        text-align: center;
+    ">
+            <h2 style="font-family: Arial, sans-serif; color: #ffffff; margin: 0;">
+                <b>Placard Violations</b>
+            </h2>
+        </div><br><br>
+
+        <form method="POST" action="{{ url_for('search') }}">
+            <img src="image/Logo.png" height="200" width="160"><br>
+            <input type="text" name="search" placeholder="Search City Name" size="40"><br><br>
+            <center>
+                <input type="submit" name="Search" style="background: #99b0f1; color: #03050e; width: 280px; font-size: 16px; border-radius: 5px">
+            </center>
+        </form>
+    </center>
+    <!-- This is
+    <center>
+
+        {% if results is defined %}
+            <br>
+            <h3>Matching Images for "{{ query }}"</h3>
+            {% if results %}
+                <ul>
+                    {% for text in results %}
+                        <li>{{ text }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No images found for "{{ query }}"</p>
+            {% endif %}
+        {% endif %} conditional !-->
+
+    </center>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Result Page</title>
+</head>
+<body style="background: #ffffff">
+    <center>
+        <h1>
+            <b>
+                <p style="font-family: Arial, sans-serif; color: #588bda">{{ length }} Placard Violations for {{ query|upper }}</p>
+            </b>
+        </h1><hr><br>
+    </center>
+
+
+    <style>
+        .scale_factor {
+            width: 370px;
+            height: auto/* Scales the image to 2 times its original size */
+        }
+    </style>
+
+    {% for img in images %}
+        <img src="car_images/{{ img }}" class="scale_factor">
+        {% set details = img|replace_text %}
+        <p style="color: rgb(19,35,86); font-family: Arial, sans-serif">
+            <b>Tag: {{ details.tag }}</b>
+        </p>
+        <p style="color: #36794b; font-family: Arial, sans-serif">
+            <b>City</b>: {{ details.city|upper }}<br>
+            <b>State</b>: {{ details.state|upper }}<br>
+            <b>Date</b>: {{ details.date }}<br>
+            <b>Where</b>: {{ details.where }}
+        </p>
+        <form action="/delete_image" method="POST">
+            <input type="hidden" name="image_name" value="{{ img }}">
+            <button type="submit"
+                    style="background: #e1555a; color: #420e0e; border-radius: 5px"
+                    onclick="return confirm('Are you sure you want to delete this photo?')">
+                Delete Photo
+            </button>
+        </form>
+        <hr><br>
+    {% endfor %}
+
+</body>
+</html>
